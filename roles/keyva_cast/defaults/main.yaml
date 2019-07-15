@@ -1,0 +1,23 @@
+---
+# Mandatory vars
+keyva_cast_source_dir: false
+keyva_cast_working_dir: false
+
+# Settable for all runs
+keyva_cast_skip_upload: false
+keyva_cast_technologies: false
+keyva_cast_ignore_directories: false
+keyva_cast_ignore_files: false
+keyva_cast_analyzer_dir: false
+keyva_cast_perl_install_dir: false
+
+# If skip_upload is not used these are also mandatory
+keyva_cast_login: false
+keyva_cast_password: false
+keyva_cast_company_id: false
+keyva_cast_application_id: false
+keyva_cast_server_url: false
+
+# Optional args used when uploading
+keyva_cast_snapshot_datetime: false
+keyva_cast_snapshot_label: false

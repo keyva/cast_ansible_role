@@ -1,0 +1,49 @@
+---
+- name: "Check that java is available"
+  command: "java -version"
+
+- name: "Check for source and working dir arguments."
+  fail:
+    msg: "keyva_cast_source_dir and keyva_cast_working_dir must both be set to run"
+  when:
+    - not keyva_cast_source_dir or not keyva_cast_working_dir
+
+- name: "Check for required upload arguments"
+  assert:
+    that:
+      - keyva_cast_login != false
+      - keyva_cast_password != false
+      - keyva_cast_company_id != false
+      - keyva_cast_application_id != false
+      - keyva_cast_server_url != false
+  when:
+    - not keyva_cast_skip_upload
+
+- name: "Build command line query"
+  set_fact:
+    keyva_cast_cmndline: >
+      java -jar HighlightAutomation.jar
+      --workingDir "{{ keyva_cast_working_dir }}"
+      --sourceDir "{{ keyva_cast_source_dir }}"
+      {% if keyva_cast_skip_upload %}--skipUpload {% endif %}
+      {% if keyva_cast_technologies %}--technologies "{{ keyva_cast_technologies }}" {% endif %}
+      {% if keyva_cast_ignore_directories %}--ignoreDirectories "{{ keyva_cast_ignore_directories }}" {% endif %}
+      {% if keyva_cast_ignore_files %}--ignoreFiles "{{ keyva_cast_ignore_files }}" {% endif %}
+      {% if keyva_cast_analyzer_dir %}--analyzerDir "{{ keyva_cast_analyzer_dir }}" {% endif %}
+      {% if keyva_cast_perl_install_dir %}--perlInstallDir "{{ keyva_cast_perl_install_dir }}" {% endif %}
+      {% if keyva_cast_login %}--login "{{ keyva_cast_login }}" {% endif %}
+      {% if keyva_cast_password %}--password "{{ keyva_cast_password }}" {% endif %}
+      {% if keyva_cast_company_id %}--companyId {{ keyva_cast_company_id }} {% endif %}
+      {% if keyva_cast_application_id %}--applicationId {{ keyva_cast_application_id }} {% endif %}
+      {% if keyva_cast_server_url %}--serverUrl "{{ keyva_cast_server_url }}" {% endif %}
+      {% if keyva_cast_snapshot_datetime %}--snapshotDatetime "{{ keyva_cast_snapshot_datetime }}" {% endif %}
+      {% if keyva_cast_snapshot_label %}--snapshotLabel "{{ keyva_cast_snapshot_label }}" {% endif %}
+
+#- name: "Print the command line we would run and trip whitespace and newline char"
+#  debug:
+#    var: keyva_cast_cmndline | trim
+
+- name: "Run CAST API"
+  command: "{{ keyva_cast_cmndline | trim }}"
+  args:
+    chdir: /root/samples/Highlight-Automation-Command
