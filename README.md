@@ -4,7 +4,7 @@ This project shares an Ansible Role developed for the consumption of CAST Highli
 
 ```diff
 - Keyva is offering a free assessment for one of your Java or Python apps. 
-- This offer is valid until November 1, 2019. Please contact a Keyva associate at info@keyvatech.com for more details.
+- This offer is valid until November 1, 2019. Please contact info@keyvatech.com for more details.
 ```
 
 ## Getting Started
