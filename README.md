@@ -11,7 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You will need a working JRE environment for this role to work installed on the target system on which this role is run. Java 8 or above is supported by the CAST API.
+1) You will need a working JRE environment for this role to work installed on the target system on which this role is run. Java 8 or above is supported by the CAST API.
 
 ```
 [root@castdemo ~]# java -version
@@ -20,27 +20,49 @@ OpenJDK Runtime Environment (build 1.8.0_212-b04)
 OpenJDK 64-Bit Server VM (build 25.212-b04, mixed mode)
 ```
 
+2) You will need the application source code on that target system you run the role on. The Ansible role will evaluate the characteristics of the source code (without extracting any of the code), and visually show the metrics on the CAST portal.
+
+
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+To install the Ansible role, copy the roles directory in the same folder from where the playbook calling the role is set up. You can take all the files as is (within this Github project) and place them all under the same folder, and then call the demo_cast_role.yaml file.
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+Once all the files are copied, the sample playbook calling the developed role looks like the below. Replace the given values with relevant values for your environment. If you'd like a free assessment of your application, you can skip the upload, and send the exported files to Keyva for a visual assessment on the CAST portal. No source code is ever exported during the assessment, only the application characteristics are captured.
 
 ```
-until finished
+---
+- name: "Run Keyva CAST"
+  hosts: all 
+  roles:
+  - role: keyva_cast
+    vars:
+      keyva_cast_source_dir: "/root/samples/sample-code-java/src/"
+      keyva_cast_working_dir: "/root/samples/Highlight-Automation-Command"
+      keyva_cast_skip_upload: true
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+If you have access to the CAST portal, you can export the assessment results directly your CAST instance. 
 
-## Running the tests
+```
+---
+- name: "Run Keyva CAST"
+  hosts: all 
+  roles:
+  - role: keyva_cast
+    vars:
+      keyva_cast_source_dir: "/root/samples/sample-code-java/src/"
+      keyva_cast_working_dir: "/root/samples/Highlight-Automation-Command"
+      keyva_cast_skip_upload: false 
+      keyva_cast_login: "user@email.com"
+      keyva_cast_password: "Password"
+      keyva_cast_server_url: "https://rpa.casthighlight.com"
+      keyva_cast_application_id: 33412
+      keyva_cast_company_id: 7154
+```
 
-Explain how to run the automated tests for this system
+
+The CAST portal captures and visually displays characteristics like Software Agility, Business Impact, Cloud Readiness, and more.
+
 
 
 
