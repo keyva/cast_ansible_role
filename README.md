@@ -8,6 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 1) Clone the repository, or download the role files on to your Ansible instance
 2) Review the demo_cast_role.yaml file, which demonstrates how to use the keyva_cast role. The explanation of various name value pairs that can be listed are explained in the "Role Arguments" section.
+3) Change the value of 'chdir' in the tasks/main.yaml file to the path of HighlightAutomation.jar file location on the target system.
 
 ### Prerequisites
 
