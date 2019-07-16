@@ -68,8 +68,61 @@ The CAST portal captures and visually displays characteristics like Software Agi
 
 ## Role Arguments
 
-Add additional notes about how to deploy this on a live system
+```
+---
+# Mandatory vars
+keyva_cast_source_dir: false
+keyva_cast_working_dir: false
 
+# Settable for all runs
+keyva_cast_skip_upload: false
+keyva_cast_technologies: false
+keyva_cast_ignore_directories: false
+keyva_cast_ignore_files: false
+keyva_cast_analyzer_dir: false
+keyva_cast_perl_install_dir: false
+
+# If skip_upload is not used these are also mandatory
+keyva_cast_login: false
+keyva_cast_password: false
+keyva_cast_company_id: false
+keyva_cast_application_id: false
+keyva_cast_server_url: false
+
+# Optional args used when uploading
+keyva_cast_snapshot_datetime: false
+keyva_cast_snapshot_label: false
+```
+
+keyva_cast_source_dir: The absolute path to the directory that contains the source code to be scanned by Highlight.
+
+keyva_cast_working_dir: This is the absolute path to the Highlight working directory. Within this directory, a Highlight temporary folder ("HLTemporary") will be created and will contain scan result files (CSVs). To make it short, this is the directory where you want to store scan results.
+
+keyva_cast_skip_upload: Will generate CSV results locally, no result upload will be performed.
+
+keyva_cast_technologies: Technologies you want to explicitly scan in your sources. Separated by ",".
+
+keyva_cast_ignore_directories: Directory name patterns to ignore during the scan (e.g. test folders, .git, etc.). Separated by ",". Source code within directories matching with these patterns will be automatically excluded from the scan.
+
+keyva_cast_ignore_files: File name patterns to ignore during the scan.
+
+keyva_cast_analyzer_dir: Alternate directory for Highlight's analyzer scripts.
+
+keyva_cast_perl_install_dir:  Directory of perl installation.
+
+keyva_cast_login:  Login of an active Highlight user.
+
+keyva_cast_password:  Password for the login indicated above.
+
+keyva_cast_company_id: Identifyer for the company (can be retrieved from the Highlight portal, it is the ID displayed in the url when clicking on the top-level domain in "MANAGE PORTFOLIO > MANAGE APPLICATIONS" from the menu).
+
+keyva_cast_application_id: Identifyer for the application (can be retried from the Highlight portal, it is the ID displayed in the url when editing an application in "MANAGE PORTFOLIO > MANAGE APPLICATIONS").
+
+keyva_cast_server_url: Default set to 'https://rpa.casthighlight.com'
+
+keyva_cast_snapshot_datetime:  Time (epoch) to use for uploaded application snapshot.
+
+keyva_cast_snapshot_label:  The application snapshot label you want to display on the application result page on the portal (e.g. release version, build number, etc.).
 
 ## Versioning
 
