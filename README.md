@@ -3,7 +3,7 @@
 This project shares an Ansible Role developed for the consumption of CAST Highlight Software API. By using this role, Ansible users can automatically trigger an application assessment for various technologies supported by CAST.  
 
 ```diff
-- Keyva is offering a free assessment for one of your Java or Python apps. Keyva can help automate the process of the app assessment from Ansible (this project) or by extending your configuration management or discovery tools, understand and share the level of effort associated with the migration, and provide a long and short term roadmap for the migration process of your entire application portfolio. 
+Keyva is offering a free assessment for one of your Java or Python apps. Keyva can help automate the process of the app assessment from Ansible (this project) or by extending your configuration management or discovery tools, understand and share the level of effort associated with the migration, and provide a long and short term roadmap for the migration process of your entire application portfolio. 
 
 This offer is valid until November 1, 2019 - please contact a Keyva associate at info@keyvatech.com for more details.
 ```
