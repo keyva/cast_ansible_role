@@ -64,7 +64,7 @@ If you have access to the CAST portal, you can export the assessment results dir
 
 The CAST portal captures and visually displays characteristics like Software Agility, Business Impact, Cloud Readiness, and more.
 
-
+For an explanation of the various arguments available for the role, please review the "Role Arguments" section below.
 
 
 ## Role Arguments
